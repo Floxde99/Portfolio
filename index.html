@@ -127,16 +127,33 @@
     <!-- Section Contact -->
     <section id="contact" class="section">
         <h2>Contact</h2>
-        <form class="contact-form" action="mailto:florian.fchr99@gmail.com" method="post" enctype="text/plain">
-            <input type="text" name="name" placeholder="Votre nom" required>
-            <input type="email" name="email" placeholder="Votre email" required>
-            <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
-            <button type="submit">Envoyer</button>
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="contact-form"
+        >
+          <!-- Champ caché form-name pour Netlify -->
+          <input type="hidden" name="form-name" value="contact" />
+          <!-- Honeypot anti-spam -->
+          <p class="hidden">
+            <label>Ne pas remplir : <input name="bot-field" /></label>
+          </p>
+      
+          <input type="text" name="name" placeholder="Votre nom" required>
+          <input type="email" name="email" placeholder="Votre email" required>
+          <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+          <button type="submit">Envoyer</button>
         </form>
-        <p>Vous pouvez également m’écrire directement à <a
-                href="mailto:florian.fchr99@gmail.com">florian.fchr99@gmail.com</a> ou via <a
-                href="https://www.linkedin.com/in/florian-faucher-818242357" target="_blank">LinkedIn</a>.</p>
-    </section>
+        <p>
+          Vous pouvez également m’écrire directement à
+          <a href="mailto:florian.fchr99@gmail.com">florian.fchr99@gmail.com</a>
+          ou via
+          <a href="https://www.linkedin.com/in/florian-faucher-818242357" target="_blank">LinkedIn</a>.
+        </p>
+      </section>
+      
 
     <!-- Scripts -->
     <script src="./assets/script.js"></script>
