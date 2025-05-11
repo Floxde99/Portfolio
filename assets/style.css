@@ -78,6 +78,82 @@ body {
   color: var(--color-text);
 }
 
+/* --- NAVBAR RESPONSIVE --- */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  margin-left: auto;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  margin: 4px 0;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+@media (max-width: 900px) {
+  .nav-container {
+    flex-direction: row;
+    position: relative;
+    padding: 0 10px;
+  }
+  .nav-logo {
+    margin-bottom: 0;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: var(--color-card);
+    width: 200px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    display: none;
+    z-index: 1001;
+    padding: 0;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .nav-links li {
+    margin: 0;
+    width: 100%;
+  }
+  .nav-links a {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 0;
+    text-align: left;
+  }
+}
+
+/* Animation burger */
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 /* Mise à jour de la navbar existante pour le responsive */
 @media (max-width: 768px) {
   .nav-container {
