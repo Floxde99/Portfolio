@@ -1,0 +1,296 @@
+/* style.css */
+/* Variables de couleurs mise à jour */
+:root {
+  --color-bg: #051133;           /* Bleu nuit plus profond */
+  --color-card: #16244d;         /* Bleu pour les cartes */
+  --color-text: #ffffff;         /* Texte blanc */
+  --color-primary: #1fe4f4;      /* Bleu néon */
+  --color-accent: #e81d75;       /* Rose punchy */
+  --color-secondary: #8232c6;    /* Violet */
+  --section-padding: 2rem;
+  --border-radius: 8px;
+}
+
+html {
+  scroll-behavior: smooth; /* Défilement fluide (tous navigateurs récents) */
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Navbar améliorée */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  background-color: rgba(5, 17, 51, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0; padding: 10px 20px;
+  display: flex; justify-content: flex-end;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+/* Sections communes */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: calc(var(--section-padding) * 2);
+  background-color: var(--color-bg);
+  border-radius: var(--border-radius);
+}
+
+.section h2 {
+  color: var(--color-accent);
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin-bottom: 2rem;
+}
+
+/* Hero section */
+#hero {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, var(--color-bg) 0%, #121d37 100%);
+}
+
+#hero h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--color-accent);
+}
+
+#hero h1 small {
+  font-size: 0.5em;
+  font-weight: normal;
+  display: block;
+  margin-top: 10px;
+}
+
+#hero .tagline {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.btn {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-secondary);
+  transform: translateY(-2px);
+}
+
+/* Projets */
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.project {
+  background-color: var(--color-card);
+  border-radius: var(--border-radius);
+  padding: var(--section-padding);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;      /* caché initialement pour animation */
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.project img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+.project h3 {
+  margin: 10px 0 5px;
+}
+
+.project h3 a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  transition: color 0.3s ease;
+}
+
+.project h3 a:hover {
+  color: var(--color-accent);
+}
+
+.project p {
+  font-size: 0.9em;
+  color: #ddd;
+}
+
+/* Compétences */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.skill-item {
+  background-color: var(--color-card);
+  border-radius: var(--border-radius);
+  padding: var(--section-padding);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+}
+
+.skill-item h3 {
+  color: var(--color-accent);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin-bottom: 1rem;
+}
+
+.skill-item p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+/* Contact */
+.contact-form {
+  background-color: var(--color-card);
+  padding: var(--section-padding);
+  border-radius: var(--border-radius);
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-text);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius);
+  font-size: 1em;
+}
+
+.contact-form button {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: var(--color-secondary);
+}
+
+#contact p {
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+/* Conteneur de la section À propos */
+#about {
+  background-color: var(--color-bg);
+  padding: var(--section-padding);
+  border-radius: var(--border-radius);
+  color: var(--color-text);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Titre */
+#about h2 {
+  color: var(--color-accent);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Paragraphes */
+#about p {
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+/* Bouton ou lien d’appel (si tu en ajoutes) */
+#about a.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#about a.btn:hover {
+  background-color: var(--color-secondary);
+}
+
+/* Réactivité simple */
+@media (max-width: 600px) {
+  .nav-links {
+    justify-content: center;
+  }
+  #hero h1 { font-size: 2em; }
+  .skills-container, .project-list {
+    grid-template-columns: 1fr;
+  }
+}
