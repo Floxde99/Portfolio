@@ -64,6 +64,7 @@ body {
 }
 
 .nav-links a {
+  position: relative;
   color: var(--color-text);
   text-decoration: none;
   font-family: "Helvetica Neue", Arial, sans-serif;
@@ -71,11 +72,25 @@ body {
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius);
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
-.nav-links a:hover {
-  background-color: var(--color-accent);
-  color: var(--color-text);
+.nav-links a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 20%;
+  bottom: 8px;
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(.22,1,.36,1);
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus::after {
+  transform: scaleX(1);
 }
 
 /* --- NAVBAR RESPONSIVE --- */
@@ -193,6 +208,16 @@ body {
   text-align: center;
   padding: 6rem 2rem;
   background: linear-gradient(135deg, var(--color-bg) 0%, #121d37 100%);
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: heroFadeIn 1.2s 0.2s forwards cubic-bezier(.22,1,.36,1);
+}
+
+@keyframes heroFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 #hero h1 {
@@ -221,12 +246,19 @@ body {
   border-radius: var(--border-radius);
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(232,29,117,0.10);
+  transition: 
+    background 0.3s,
+    box-shadow 0.3s,
+    transform 0.2s;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn:hover {
-  background-color: var(--color-secondary);
-  transform: translateY(-2px);
+  background: linear-gradient(90deg, var(--color-accent) 60%, var(--color-primary) 100%);
+  box-shadow: 0 4px 16px rgba(30,228,244,0.15), 0 2px 8px rgba(232,29,117,0.15);
+  transform: translateY(-2px) scale(1.04);
 }
 
 /* Projets */
@@ -241,19 +273,23 @@ body {
   border-radius: var(--border-radius);
   padding: var(--section-padding);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  opacity: 0;      /* caché initialement pour animation */
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out, transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px) scale(1);
+  transition: 
+    opacity 0.8s ease-out, 
+    transform 0.8s cubic-bezier(.22,1,.36,1),
+    box-shadow 0.3s cubic-bezier(.22,1,.36,1);
 }
 
 .project.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .project:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 24px 0 rgba(30,228,244,0.15), 0 2px 8px 0 rgba(232,29,117,0.10);
+  border: 1.5px solid var(--color-primary);
 }
 
 .project img {
@@ -331,6 +367,15 @@ body {
   margin-bottom: 1rem;
   border-radius: var(--border-radius);
   font-size: 1em;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border: 1.5px solid var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(30,228,244,0.15);
+  background-color: rgba(255,255,255,0.15);
+  transition: border 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
 .contact-form button {
@@ -464,5 +509,14 @@ body {
   #hero h1 { font-size: 2em; }
   .skills-container, .project-list {
     grid-template-columns: 1fr;
+  }
+  .section {
+    padding: 1.2rem 0.5rem;
+  }
+  #hero {
+    padding: 4rem 0.5rem;
+  }
+  .project-list, .skills-container {
+    gap: 1rem;
   }
 }
