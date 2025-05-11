@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { threshold: 0.2 });
     items.forEach(item => observer.observe(item));
     
+    // Fade-in sur les compétences
+    const skills = document.querySelectorAll('.skill-item');
+    skills.forEach(item => observer.observe(item));
+    
     // Smooth scroll pour anciennes versions de navigateurs (optionnel)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
@@ -37,4 +41,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       });
     }
+    
+    // Ajoute l'effet "fade-in" aux titres de section
+    document.querySelectorAll('.section').forEach(section => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      observer.observe(section);
+    });
+});
+
+// Ajoute dans script.js
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+  if(loader) loader.style.opacity = 0;
+  setTimeout(() => loader && loader.remove(), 500);
 });

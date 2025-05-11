@@ -23,6 +23,29 @@ body {
   line-height: 1.6;
 }
 
+/* Loader CSS */
+#loader {
+  position: fixed;
+  z-index: 2000;
+  inset: 0;
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s;
+}
+#loader .spinner {
+  border: 4px solid var(--color-card);
+  border-top: 4px solid var(--color-accent);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 /* Navbar améliorée */
 .navbar {
   position: fixed;
@@ -182,6 +205,9 @@ body {
     border-radius: 0;
     text-align: left;
   }
+  #hero {
+    padding-top: 100px; /* Assure-toi que cette valeur couvre bien la hauteur de ta navbar */
+  }
 }
 
 /* Animation burger */
@@ -227,6 +253,40 @@ body {
   font-weight: bold;
   font-family: "Helvetica Neue", Arial, sans-serif;
   margin-bottom: 2rem;
+  position: relative;
+  cursor: pointer;
+  transition: color 0.3s;
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s cubic-bezier(.22,1,.36,1),
+    transform 0.8s cubic-bezier(.22,1,.36,1),
+    color 0.3s;
+}
+
+.section.visible h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section h2:hover {
+  color: var(--color-primary);
+}
+
+.section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 8px auto 0;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+  border-radius: 2px;
+  opacity: 0.7;
+  transition: width 0.3s;
+}
+
+.section h2:hover::after {
+  width: 90px;
 }
 
 /* Hero section */
@@ -237,12 +297,19 @@ body {
   opacity: 0;
   transform: translateY(-30px);
   animation: heroFadeIn 1.2s 0.2s forwards cubic-bezier(.22,1,.36,1);
+  background-attachment: fixed;
 }
 
 @keyframes heroFadeIn {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  #hero {
+    background-attachment: scroll;
   }
 }
 
@@ -281,10 +348,45 @@ body {
   overflow: hidden;
 }
 
+.btn::before {
+  content: "";
+  position: absolute;
+  left: -75%;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.0) 100%);
+  transform: skewX(-20deg);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 120%;
+}
+
 .btn:hover {
   background: linear-gradient(90deg, var(--color-accent) 60%, var(--color-primary) 100%);
   box-shadow: 0 4px 16px rgba(30,228,244,0.15), 0 2px 8px rgba(232,29,117,0.15);
   transform: translateY(-2px) scale(1.04);
+}
+
+/* Photo dans le hero */
+.hero-photo {
+  display: block;
+  margin: 2rem auto 1.5rem auto;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--color-accent);
+  box-shadow: 0 6px 32px 0 rgba(232,29,117,0.18), 0 2px 8px 0 rgba(30,228,244,0.10);
+  background: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hero-photo:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 12px 48px 0 rgba(232,29,117,0.28);
 }
 
 /* Projets */
@@ -377,6 +479,20 @@ body {
   font-size: 0.9em;
 }
 
+.skill-item {
+  opacity: 0;
+  transform: translateY(20px) scale(1);
+  transition:
+    opacity 0.8s cubic-bezier(.22,1,.36,1),
+    transform 0.8s cubic-bezier(.22,1,.36,1),
+    box-shadow 0.3s cubic-bezier(.22,1,.36,1);
+}
+
+.skill-item.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 /* Contact */
 .contact-form {
   background-color: var(--color-card);
@@ -431,27 +547,32 @@ body {
 /* Conteneur de la section À propos */
 #about {
   background-color: var(--color-bg);
-  padding: var(--section-padding);
+  padding: calc(var(--section-padding) * 2);
   border-radius: var(--border-radius);
   color: var(--color-text);
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+  box-sizing: border-box;
 }
 
 /* Titre */
 #about h2 {
   color: var(--color-accent);
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-weight: bold;
   font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+#about h2:hover {
+  color: var(--color-primary);
 }
 
 /* Paragraphes */
 #about p {
   line-height: 1.6;
   font-size: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   font-family: "Open Sans", Arial, sans-serif;
 }
 
@@ -557,9 +678,16 @@ body {
     padding: 1.2rem 0.5rem;
   }
   #hero {
-    padding: 4rem 0.5rem;
+    padding: 100px 0.5rem 4rem 0.5rem;
   }
   .project-list, .skills-container {
     gap: 1rem;
   }
+}
+
+/* Focus visible styles */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  transition: outline 0.2s;
 }
