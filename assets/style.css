@@ -815,3 +815,26 @@ html.light-theme .contact-form textarea {
     border-color 0.5s ease,
     box-shadow 0.5s ease;
 }
+
+/* Styles du carrousel - harmonisation avec le design existant */
+.carousel-container {
+  margin-top: 2rem;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.carousel-slide {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.carousel-control:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .carousel-control {
+    width: 36px;
+    height: 36px;
+  }
+}

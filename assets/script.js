@@ -136,3 +136,124 @@ document.addEventListener('DOMContentLoaded', function() {
   // Si aucune préférence n'est stockée, utiliser le thème sombre par défaut
   // (Pas besoin de code ici car ton site est déjà en mode sombre par défaut)
 });
+
+// Initialisation du carrousel
+document.addEventListener('DOMContentLoaded', function() {
+  const track = document.querySelector('.carousel-track');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const prevButton = document.querySelector('.carousel-control.prev');
+  const nextButton = document.querySelector('.carousel-control.next');
+  const indicatorsContainer = document.querySelector('.carousel-indicators');
+  
+  let currentIndex = 0;
+  let slideWidth = 0;
+  let slidesPerView = 1;
+  let totalSlides = slides.length;
+  let indicators = [];
+  
+  // Fonction pour initialiser les dimensions
+  function initCarousel() {
+    // Déterminer combien de slides afficher par vue
+    slidesPerView = window.innerWidth >= 1024 ? 2 : 1;
+    slideWidth = track.clientWidth / slidesPerView;
+    
+    // Appliquer la largeur aux slides
+    slides.forEach(slide => {
+      slide.style.width = `${slideWidth}px`;
+    });
+    
+    // Créer les indicateurs
+    indicatorsContainer.innerHTML = '';
+    indicators = [];
+    
+    const totalGroups = Math.ceil(totalSlides / slidesPerView);
+    
+    for (let i = 0; i < totalGroups; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('w-3', 'h-3', 'rounded-full', 'bg-gray-300', 'hover:bg-gray-400', 'transition-colors');
+      dot.setAttribute('aria-label', `Voir projet ${i + 1}`);
+      
+      dot.addEventListener('click', () => {
+        goToSlide(i * slidesPerView);
+      });
+      
+      indicatorsContainer.appendChild(dot);
+      indicators.push(dot);
+    }
+    
+    // Réinitialiser la position
+    goToSlide(0);
+  }
+  
+  // Fonction pour changer de slide
+  function goToSlide(index) {
+    if (index < 0) {
+      index = 0;
+    } else if (index > totalSlides - slidesPerView) {
+      index = totalSlides - slidesPerView;
+    }
+    
+    currentIndex = index;
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    
+    // Mettre à jour les indicateurs
+    const activeGroup = Math.floor(currentIndex / slidesPerView);
+    indicators.forEach((dot, i) => {
+      if (i === activeGroup) {
+        dot.classList.remove('bg-gray-300');
+        dot.classList.add('bg-[var(--color-accent)]', 'scale-125');
+      } else {
+        dot.classList.add('bg-gray-300');
+        dot.classList.remove('bg-[var(--color-accent)]', 'scale-125');
+      }
+    });
+    
+    // Activer/désactiver les boutons selon la position
+    prevButton.disabled = currentIndex === 0;
+    nextButton.disabled = currentIndex >= totalSlides - slidesPerView;
+    
+    prevButton.style.opacity = prevButton.disabled ? '0.5' : '1';
+    nextButton.style.opacity = nextButton.disabled ? '0.5' : '1';
+  }
+  
+  // Navigation
+  prevButton.addEventListener('click', () => {
+    goToSlide(currentIndex - slidesPerView);
+  });
+  
+  nextButton.addEventListener('click', () => {
+    goToSlide(currentIndex + slidesPerView);
+  });
+  
+  // Initialiser le carrousel
+  initCarousel();
+  
+  // Réinitialiser lors du redimensionnement
+  window.addEventListener('resize', initCarousel);
+  
+  // Ajouter le swipe pour mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  const container = document.querySelector('.carousel-container');
+  
+  container.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  
+  container.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    if (touchEndX < touchStartX - swipeThreshold) {
+      // Swipe à gauche
+      goToSlide(currentIndex + slidesPerView);
+    } else if (touchEndX > touchStartX + swipeThreshold) {
+      // Swipe à droite
+      goToSlide(currentIndex - slidesPerView);
+    }
+  }
+});
