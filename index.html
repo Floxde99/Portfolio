@@ -141,7 +141,10 @@
     <section id="contact" class="section">
         <h2>Contact</h2>
         <div class="contact-block">
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form" id="contactForm" method="POST" data-netlify="true" name="contact">
+                <!-- Ajoute ce champ caché que Netlify requiert -->
+                <input type="hidden" name="form-name" value="contact">
+                
                 <input type="text" name="name" placeholder="Votre nom" required>
                 <input type="email" name="email" placeholder="Votre email" required>
                 <textarea name="message" rows="5" placeholder="Votre message" required></textarea>

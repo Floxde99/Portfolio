@@ -65,62 +65,44 @@ window.addEventListener('load', () => {
 });
 
 // Dans script.js
-document.getElementById('contactForm').addEventListener('submit', async (e) => {
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  // Empêcher la redirection de page mais soumettre à Netlify
   e.preventDefault();
   
-  const formData = {
-    name: e.target.name.value,
-    email: e.target.email.value,
-    message: e.target.message.value
-  };
-  
   const notification = document.getElementById('notification');
-  
-  // Désactiver le bouton pendant l'envoi
   const submitBtn = e.target.querySelector('button[type="submit"]');
   submitBtn.disabled = true;
   submitBtn.innerHTML = 'Envoi en cours...';
   
-  try {
-    const response = await fetch('/.netlify/functions/sendEmail', {
-      method: 'POST',
-      body: JSON.stringify(formData)
-    });
-    
-    const result = await response.json();
-    
-    if (response.ok) {
-      // Message de succès
-      notification.textContent = '✓ Message envoyé avec succès!';
-      notification.className = 'notification success';
-      e.target.reset(); // Réinitialiser le formulaire
-      
-      // Effacer la notification après 5 secondes
-      setTimeout(() => {
-        notification.className = 'notification';
-      }, 5000);
-    } else {
-      // Message d'erreur
-      notification.textContent = `✗ Erreur: ${result.error || 'Problème lors de l\'envoi'}`;
-      notification.className = 'notification error';
-      
-      // Effacer la notification après 5 secondes
-      setTimeout(() => {
-        notification.className = 'notification';
-      }, 5000);
-    }
-  } catch (error) {
-    // Message d'erreur pour les exceptions
-    notification.textContent = '✗ Une erreur s\'est produite lors de l\'envoi';
-    notification.className = 'notification error';
+  // Envoyer le formulaire via l'API Fetch à Netlify
+  const formData = new FormData(e.target);
+  
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString()
+  })
+  .then(() => {
+    // Message de succès
+    notification.textContent = '✓ Message envoyé avec succès!';
+    notification.className = 'notification success';
+    e.target.reset(); // Réinitialiser le formulaire
     
     // Effacer la notification après 5 secondes
     setTimeout(() => {
       notification.className = 'notification';
     }, 5000);
-  } finally {
-    // Réactiver le bouton après l'envoi
+  })
+  .catch(error => {
+    notification.textContent = '✗ Une erreur s\'est produite lors de l\'envoi';
+    notification.className = 'notification error';
+    
+    setTimeout(() => {
+      notification.className = 'notification';
+    }, 5000);
+  })
+  .finally(() => {
     submitBtn.disabled = false;
     submitBtn.innerHTML = 'Envoyer';
-  }
+  });
 });
