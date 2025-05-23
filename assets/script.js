@@ -106,3 +106,33 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     submitBtn.innerHTML = 'Envoyer';
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Fonction pour basculer le thème
+  const toggleTheme = () => {
+    if (document.documentElement.classList.contains('light-theme')) {
+      // Basculer vers le thème sombre
+      document.documentElement.classList.remove('light-theme');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      // Basculer vers le thème clair
+      document.documentElement.classList.add('light-theme');
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
+  // Ajouter l'écouteur d'événement au bouton
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+  }
+
+  // Vérifier si l'utilisateur a déjà une préférence stockée
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    document.documentElement.classList.add('light-theme');
+  }
+  
+  // Si aucune préférence n'est stockée, utiliser le thème sombre par défaut
+  // (Pas besoin de code ici car ton site est déjà en mode sombre par défaut)
+});

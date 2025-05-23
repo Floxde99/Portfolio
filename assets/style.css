@@ -11,6 +11,16 @@
   --border-radius: 8px;
 }
 
+/* Variables pour le mode clair */
+html.light-theme {
+  --color-bg: #f0f4ff;
+  --color-card: #ffffff;
+  --color-text: #16244d;
+  --color-primary: #1fe4f4;  /* On garde la même couleur d'accent */
+  --color-accent: #e81d75;   /* On garde la même couleur rose */
+  --color-secondary: #8232c6;
+}
+
 html {
   scroll-behavior: smooth; /* Défilement fluide (tous navigateurs récents) */
 }
@@ -21,6 +31,7 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 /* Loader CSS */
@@ -719,4 +730,88 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border: 1px solid rgba(255, 71, 87, 0.3);
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Styles du bouton de thème */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16px;
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Icône visible selon le thème */
+.theme-toggle .sun {
+  display: none;
+}
+
+.theme-toggle .moon {
+  display: block;
+}
+
+html.light-theme .theme-toggle .sun {
+  display: block;
+}
+
+html.light-theme .theme-toggle .moon {
+  display: none;
+}
+
+/* Ajustements spécifiques pour le mode clair */
+html.light-theme .navbar {
+  background: linear-gradient(90deg, rgba(31, 228, 244, 0.05) 0%, rgba(232, 29, 117, 0.07) 100%), rgba(255, 255, 255, 0.95);
+  border-bottom: 2px solid var(--color-accent);
+  box-shadow: 0 4px 24px 0 rgba(30, 228, 244, 0.12);
+}
+
+html.light-theme .project:hover,
+html.light-theme .skill-item:hover {
+  box-shadow: 0 12px 24px 0 rgba(232, 29, 117, 0.15), 0 2px 8px 0 rgba(0, 0, 0, 0.05);
+}
+
+html.light-theme .footer {
+  background: linear-gradient(120deg, rgba(232, 29, 117, 0.07) 0%, rgba(31, 228, 244, 0.07) 100%), #f8faff;
+}
+
+/* Amélioration de la lisibilité des cartes en mode clair */
+html.light-theme .skill-item,
+html.light-theme .project {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(232, 29, 117, 0.1);
+}
+
+html.light-theme .contact-form input,
+html.light-theme .contact-form textarea {
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Transitions douces entre les thèmes */
+.navbar, .section, .project, .skill-item, .contact-form, .footer, 
+.btn, input, textarea, button {
+  transition: 
+    background-color 0.5s ease,
+    color 0.5s ease,
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
 }
