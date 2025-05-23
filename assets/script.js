@@ -53,12 +53,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }, { threshold: 0.2 });
       observer.observe(section);
-    });
+})
 });
+
 
 // Ajoute dans script.js
 window.addEventListener('load', () => {
   const loader = document.getElementById('loader');
   if(loader) loader.style.opacity = 0;
   setTimeout(() => loader && loader.remove(), 500);
+});
+
+// Dans script.js
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const formData = {
+    name: e.target.name.value,
+    email: e.target.email.value,
+    message: e.target.message.value
+  };
+  
+  try {
+    const response = await fetch('/.netlify/functions/sendEmail', {
+      method: 'POST',
+      body: JSON.stringify(formData)
+    });
+    
+    const result = await response.json();
+    
+    if (response.ok) {
+      alert('Message envoyé avec succès!');
+      e.target.reset();
+    } else {
+      alert(`Erreur: ${result.error}`);
+    }
+  } catch (error) {
+    alert('Une erreur s\'est produite lors de l\'envoi du message.');
+  }
 });
