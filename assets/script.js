@@ -74,6 +74,13 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
     message: e.target.message.value
   };
   
+  const notification = document.getElementById('notification');
+  
+  // Désactiver le bouton pendant l'envoi
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'Envoi en cours...';
+  
   try {
     const response = await fetch('/.netlify/functions/sendEmail', {
       method: 'POST',
@@ -83,12 +90,37 @@ document.getElementById('contactForm').addEventListener('submit', async (e) => {
     const result = await response.json();
     
     if (response.ok) {
-      alert('Message envoyé avec succès!');
-      e.target.reset();
+      // Message de succès
+      notification.textContent = '✓ Message envoyé avec succès!';
+      notification.className = 'notification success';
+      e.target.reset(); // Réinitialiser le formulaire
+      
+      // Effacer la notification après 5 secondes
+      setTimeout(() => {
+        notification.className = 'notification';
+      }, 5000);
     } else {
-      alert(`Erreur: ${result.error}`);
+      // Message d'erreur
+      notification.textContent = `✗ Erreur: ${result.error || 'Problème lors de l\'envoi'}`;
+      notification.className = 'notification error';
+      
+      // Effacer la notification après 5 secondes
+      setTimeout(() => {
+        notification.className = 'notification';
+      }, 5000);
     }
   } catch (error) {
-    alert('Une erreur s\'est produite lors de l\'envoi du message.');
+    // Message d'erreur pour les exceptions
+    notification.textContent = '✗ Une erreur s\'est produite lors de l\'envoi';
+    notification.className = 'notification error';
+    
+    // Effacer la notification après 5 secondes
+    setTimeout(() => {
+      notification.className = 'notification';
+    }, 5000);
+  } finally {
+    // Réactiver le bouton après l'envoi
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = 'Envoyer';
   }
 });

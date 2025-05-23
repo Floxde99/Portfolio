@@ -691,3 +691,32 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   outline-offset: 2px;
   transition: outline 0.2s;
 }
+
+/* Notification styles */
+.notification {
+  padding: 12px 20px;
+  margin: 1rem auto 0;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-10px);
+  max-width: 600px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  text-align: center;
+}
+
+.notification.success {
+  background-color: rgba(46, 213, 115, 0.15);
+  color: #2ed573;
+  border: 1px solid rgba(46, 213, 115, 0.3);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.notification.error {
+  background-color: rgba(255, 71, 87, 0.15);
+  color: #ff4757;
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  opacity: 1;
+  transform: translateY(0);
+}
