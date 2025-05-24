@@ -838,3 +838,178 @@ html.light-theme .contact-form textarea {
     height: 36px;
   }
 }
+.tech-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.tech-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.tech-logo:hover {
+    transform: scale(1.1);
+}
+
+.methodologies {
+    margin-top: 15px;
+    font-style: italic;
+    color: #666;
+}
+
+/* Nouvelles règles CSS pour la section compétences */
+.tech-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  padding: 10px;
+  background: linear-gradient(120deg, rgba(31,228,244,0.04) 0%, rgba(232,29,117,0.04) 100%);
+  border-radius: 12px;
+}
+
+.tech-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  padding: 8px;
+  border-radius: 50%;
+  background-color: var(--color-card);
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(.22,1,.36,1);
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+  position: relative;
+}
+
+.tech-logo:hover {
+  transform: translateY(-5px) scale(1.15);
+  filter: drop-shadow(0 5px 12px rgba(31,228,244,0.3));
+  border-color: var(--color-primary);
+  background: linear-gradient(120deg, rgba(31,228,244,0.05) 0%, rgba(232,29,117,0.05) 100%), var(--color-card);
+}
+
+/* Animation au survol pour les logos */
+.tech-logo::after {
+  content: attr(title);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: var(--color-accent);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(.22,1,.36,1);
+  white-space: nowrap;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.tech-logo:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Amélioration du design des cartes de compétences */
+.skill-item {
+  padding: 1.8rem;
+  transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.4s cubic-bezier(.22,1,.36,1);
+  border: 1px solid rgba(31,228,244,0.1);
+}
+
+.skill-item h3 {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+  width: 100%;
+}
+
+.skill-item h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: 2px;
+}
+
+/* Améliorations pour la section outils et méthodes */
+.methodologies {
+  margin-top: 20px;
+  padding: 15px;
+  text-align: center;
+  border-top: 1px solid rgba(31,228,244,0.1);
+  color: var(--color-text);
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+/* Adaptation au mode clair */
+html.light-theme .tech-logo {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+html.light-theme .tech-logos {
+  background: linear-gradient(120deg, rgba(31, 228, 244, 0.08) 0%, rgba(232, 29, 117, 0.08) 100%);
+}
+
+html.light-theme .methodologies {
+  color: var(--color-text);
+}
+
+/* Animation d'entrée pour les éléments de compétences */
+.skill-item {
+  animation: fadeInUp 0.8s backwards;
+}
+
+.skill-item:nth-child(1) { animation-delay: 0.1s; }
+.skill-item:nth-child(2) { animation-delay: 0.2s; }
+.skill-item:nth-child(3) { animation-delay: 0.3s; }
+.skill-item:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .tech-logo {
+    width: 38px;
+    height: 38px;
+    padding: 6px;
+  }
+  
+  .tech-logos {
+    gap: 12px;
+    padding: 8px;
+  }
+  
+  .skill-item {
+    padding: 1.5rem;
+  }
+}
