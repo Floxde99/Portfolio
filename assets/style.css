@@ -696,6 +696,37 @@ body {
   }
 }
 
+/* Correction pour l'affichage mobile du hero */
+@media (max-width: 900px) {
+  #hero {
+    padding-top: 120px !important; /* Augmentation du padding-top pour compenser la navbar */
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero {
+    padding-top: 140px !important; /* Encore plus de padding pour les très petits écrans */
+  }
+  
+  /* Réduire légèrement la taille du titre sur mobile pour une meilleure adaptation */
+  #hero h1 {
+    font-size: 2.4rem;
+    margin-top: 0;
+  }
+  
+  /* Améliorer l'espacement vertical des éléments dans le hero */
+  #hero .hero-photo {
+    margin-top: 1.5rem;
+  }
+  
+  /* Assurer que le menu mobile ne masque pas le contenu */
+  .navbar {
+    height: auto;
+    min-height: 70px;
+  }
+}
+
 /* Focus visible styles */
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
   outline: 2px solid var(--color-primary);
@@ -1012,4 +1043,14 @@ html.light-theme .methodologies {
   .skill-item {
     padding: 1.5rem;
   }
+}
+
+/* Classe utilitaire pour assurer l'affichage correct sur mobile */
+.mobile-padding {
+  scroll-margin-top: 80px; /* Aide aussi pour les liens d'ancrage */
+}
+
+/* S'assurer que toutes les sections ont un bon espacement pour les liens d'ancrage */
+section {
+  scroll-margin-top: 80px;
 }
