@@ -1,4 +1,3 @@
-// script.js
 // Ajoute l'effet "fade-in" aux projets lors du scroll
 document.addEventListener('DOMContentLoaded', function() {
     const items = document.querySelectorAll('.fade-in');
@@ -108,7 +107,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Fonction pour basculer le thème
   const toggleTheme = () => {
     if (document.documentElement.classList.contains('light-theme')) {
       // Basculer vers le thème sombre
