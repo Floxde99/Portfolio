@@ -1,421 +1,293 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
-    <title>Florian Faucher – Développeur Web & Web Mobile en formation</title>
-    <meta name="description"
-        content="Florian Faucher, développeur web en formation à l'école RI7, passionné et rigoureux. Recherche alternance dès septembre 2025.">
+    <title>Florian Faucher - Développeur Web & Web Mobile</title>
+    <meta name="description" content="Portfolio de Florian Faucher, développeur web & web mobile en formation à l'école RI7. Alternance dès septembre 2025.">
     <meta name="keywords" content="Florian Faucher, développeur web, portfolio, projets, compétences, contact">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#051133">
+    <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://mongoosejs.com" crossorigin>
+    <link rel="preconnect" href="https://via.placeholder.com" crossorigin>
+    <link rel="preload" href="./assets/style.css" as="style">
     <link rel="stylesheet" href="./assets/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body>
-
-    <div id="loader">
+    <div id="loader" aria-hidden="true">
         <div class="spinner"></div>
     </div>
 
-    <!-- Navigation fixe -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation">
         <div class="nav-container">
-            <a href="#hero" class="nav-logo">
-                <img src="./assets/pictures/logo.jpg" alt="Logo Florian Faucher" class="logo">
+            <a href="#hero" class="nav-logo" aria-label="Retour à l'accueil">
+                <img src="./assets/pictures/logo.jpg" alt="Logo Florian Faucher" class="logo" loading="eager" decoding="async" width="88" height="44" fetchpriority="high">
             </a>
-            <button class="nav-toggle" aria-label="Ouvrir le menu">
+            <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <ul class="nav-links">
-                <li><a href="#hero">Accueil</a></li>
+                <li><a href="#hero" aria-current="page">Accueil</a></li>
                 <li><a href="#about">À propos</a></li>
                 <li><a href="#projects">Projets</a></li>
                 <li><a href="#skills">Compétences</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button id="theme-toggle" class="theme-toggle" aria-label="Changer le thème">
-                <svg class="moon" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" />
+                <svg class="moon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                <svg class="sun" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
+                <svg class="sun" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" />
-                    <path
-                        d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                 </svg>
             </button>
         </div>
     </nav>
 
-    <!-- Section Hero / Accueil -->
-    <section id="hero" class="section mobile-padding">
-        <h1>Florian Faucher<br><small>Développeur Web & Web Mobile en formation</small></h1>
-        <img src="./assets/pictures/photomoi.png" alt="Photo de Florian Faucher" class="hero-photo">
-        <p class="tagline">Passionné par le code et l’innovation, j’allie rigueur et créativité pour créer des
-            expériences web modernes.</p>
-        <a href="./assets/documents/CV_Florian-Faucher.pdf" class="btn" download="CV_Florian_Faucher.pdf">Télécharger
-            mon CV</a>
-    </section>
+    <main>
+        <section id="hero" class="section mobile-padding hero">
+            <div class="hero-text">
+                <p class="eyebrow">Portfolio 2025 • Alternance recherchée</p>
+                <h1>Florian Faucher<br><small>Développeur Web & Web Mobile en formation</small></h1>
+                <p class="tagline">Passionné par le code et l'innovation, j'allie rigueur et créativité pour imaginer des expériences web modernes.</p>
+                <div class="hero-actions">
+                    <a href="./assets/documents/CV_Florian-Faucher.pdf" class="btn" download="CV_Florian_Faucher.pdf">Télécharger mon CV</a>
+                    <a href="#projects" class="btn ghost">Voir mes projets</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="./assets/pictures/photomoi.png" alt="Portrait de Florian Faucher" class="hero-photo" loading="eager" decoding="async" width="160" height="160" fetchpriority="high">
+                <div class="hero-badges">
+                    <div class="badge">Front & Back</div>
+                    <div class="badge">UI soignée</div>
+                    <div class="badge">Esprit produit</div>
+                </div>
+            </div>
+        </section>
 
-    <section id="about" class="section">
-        <h2>À propos</h2>
-        <p>
-            Actuellement en formation de Développeur Web Full-Stack, je nourris une véritable passion pour la création
-            d’expériences numériques élégantes et performantes. J’ai acquis une solide maîtrise des fondamentaux
-            front-end (HTML, CSS, JavaScript) et back-end (Node.js, PHP, Twig), ainsi que des frameworks et outils
-            modernes (Bootstrap, Tailwind, Prisma, Mongoose).
-            Curieux et rigoureux, je conçois mes projets en appliquant les meilleures pratiques de modélisation (UML,
-            Merise) et les design patterns (MVC, Singleton), et j’intègre systématiquement l’approche agile (Scrum,
-            Kanban) pour mener mes développements de la conception jusqu’à la mise en production.
-            Passionné par l’apprentissage continu, je complète mes compétences techniques par une bonne connaissance des
-            bases de données relationnelles (MySQL, SQL) et NoSQL (MongoDB), ainsi que par la mise en place de tests
-            unitaires (Jest) et de workflows de versioning collaboratif (Git).
+        <section id="about" class="section">
+            <h2>À propos</h2>
+            <p>
+                Actuellement en formation de Développeur Web Full-Stack, je nourris une véritable passion pour la création d'expériences numériques élégantes et performantes. J'ai acquis une solide maîtrise des fondamentaux front-end (HTML, CSS, JavaScript) et back-end (Node.js, PHP, Twig), ainsi que des frameworks et outils modernes (Bootstrap, Tailwind, Prisma, Mongoose).
+                Curieux et rigoureux, je conçois mes projets en appliquant les meilleures pratiques de modélisation (UML, Merise) et les design patterns (MVC, Singleton), et j'intègre systématiquement l'approche agile (Scrum, Kanban) pour mener mes développements de la conception jusqu'à la mise en production.
+            </p>
+            <p>
+                Passionné par l'apprentissage continu, je complète mes compétences techniques par une bonne connaissance des bases de données relationnelles (MySQL, SQL) et NoSQL (MongoDB), ainsi que par la mise en place de tests unitaires (Jest) et de workflows de versioning collaboratif (Git).
+            </p>
+            <p>
+                Dans le cadre de mon parcours, je suis aujourd'hui à la recherche d'une alternance en développement web ou web-mobile. Mon objectif est d'intégrer une équipe dynamique où je pourrais mettre en pratique mes acquis, monter en compétences sur des projets concrets et contribuer activement à la création d'applications innovantes.
+            </p>
+            <p>
+                Curieux, autonome et doté d'un bon sens du relationnel, je suis prêt à relever des défis techniques et à apprendre aux côtés de professionnels expérimentés. Ensemble, nous pourrons concevoir des solutions digitales robustes, évolutives et centrées sur l'utilisateur.
+            </p>
+            <a href="#contact" class="btn">Me contacter</a>
+        </section>
 
-        </p>
-        <p>
-            Dans le cadre de mon parcours, je suis aujourd’hui à la recherche d’une alternance en développement web ou
-            web-mobile. Mon objectif est d’intégrer une équipe dynamique où je pourrais mettre en pratique mes acquis,
-            monter en compétences sur des projets concrets et contribuer activement à la création d’applications
-            innovantes.
-            Curieux, autonome et doté d’un bon sens du relationnel, je suis prêt à relever des défis techniques et à
-            apprendre aux côtés de professionnels expérimentés. Ensemble, je suis convaincu que nous pourrons concevoir
-            des solutions digitales robustes, évolutives et centrées sur l’utilisateur.
-        </p>
-        <p>
-            N’hésitez pas à me contacter pour discuter d’une collaboration future !
-        </p>
-        <a href="#contact" class="btn">Me contacter</a>
-    </section>
+        <section id="projects" class="section">
+            <h2>Projets</h2>
 
-    <!-- Section Projets -->
-    <section id="projects" class="section">
-        <h2>Projets</h2>
-
-        <div class="relative max-w-5xl mx-auto px-4">
-            <!-- Carrousel container -->
-            <div class="carousel-container overflow-hidden rounded-lg">
-                <div class="carousel-track flex transition-transform duration-500 ease-in-out">
-                    <!-- Projet 1: cuisine-back -->
-                    <div class="carousel-slide w-full lg:w-1/2 flex-shrink-0 p-4">
-                        <div
-                            class="bg-[var(--color-card)] rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-transparent hover:border-[var(--color-primary)] relative">
-                            <a href="https://github.com/Floxde99/cuisine-back" target="_blank"
-                                class="absolute top-2 right-2 bg-black bg-opacity-70 p-2 rounded-full transition-transform hover:scale-110">
-                                <svg width="20" height="20" fill="white" aria-hidden="true">
-                                    <path
-                                        d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
-                                </svg>
-                            </a>
-                            <img src="./assets/pictures/marmiton2.0.png" alt="Cuisine Backend"
-                                class="w-full h-48 object-cover">
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2"><a href="https://github.com/Floxde99/cuisine-back"
-                                        target="_blank"
-                                        class="text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-colors">Cuisine
-                                        Backend</a></h3>
-                                <p class="text-[var(--color-text)] opacity-90 mb-3">API REST pour l'application de
-                                    cuisine avec authentification et gestion des recettes.</p>
-                                <p><strong class="text-[var(--color-accent)]">Tech :</strong> Node.js, Express, MongoDB
-                                </p>
-                            </div>
+            <div class="projects-shell">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <div class="carousel-slide">
+                            <article class="project-card">
+                                <a href="https://github.com/Floxde99/cuisine-back" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Voir le dépôt Cuisine Backend sur GitHub">
+                                    <svg width="20" height="20" fill="white" aria-hidden="true">
+                                        <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
+                                    </svg>
+                                </a>
+                                <img src="./assets/pictures/marmiton2.0.png" alt="Aperçu du projet Cuisine Backend" class="project-cover" loading="lazy" decoding="async" width="640" height="384">
+                                <div class="project-content">
+                                    <h3 class="project-title"><a href="https://github.com/Floxde99/cuisine-back" target="_blank" rel="noopener noreferrer">Cuisine Backend</a></h3>
+                                    <p class="project-desc">API REST pour l'application de cuisine avec authentification et gestion des recettes.</p>
+                                    <p class="project-tech"><strong>Tech :</strong> Node.js, Express, MongoDB</p>
+                                </div>
+                            </article>
                         </div>
-                    </div>
 
-                    <!-- Projet 2: cuisine-front -->
-                    <div class="carousel-slide w-full lg:w-1/2 flex-shrink-0 p-4">
-                        <div
-                            class="bg-[var(--color-card)] rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-transparent hover:border-[var(--color-primary)] relative">
-                            <a href="https://github.com/Floxde99/cuisine-front" target="_blank"
-                                class="absolute top-2 right-2 bg-black bg-opacity-70 p-2 rounded-full transition-transform hover:scale-110">
-                                <svg width="20" height="20" fill="white" aria-hidden="true">
-                                    <path
-                                        d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
-                                </svg>
-                            </a>
-                            <img src="./assets/pictures/marmiton2.0.png" alt="Cuisine Frontend"
-                                class="w-full h-48 object-cover">
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2"><a href="https://github.com/Floxde99/cuisine-front"
-                                        target="_blank"
-                                        class="text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-colors">Cuisine
-                                        Frontend</a></h3>
-                                <p class="text-[var(--color-text)] opacity-90 mb-3">Interface utilisateur pour une
-                                    application de recettes de cuisine avec recherche et favoris.</p>
-                                <p><strong class="text-[var(--color-accent)]">Tech :</strong> JavaScript, React, CSS</p>
-                            </div>
+                        <div class="carousel-slide">
+                            <article class="project-card">
+                                <a href="https://github.com/Floxde99/cuisine-front" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Voir le dépôt Cuisine Frontend sur GitHub">
+                                    <svg width="20" height="20" fill="white" aria-hidden="true">
+                                        <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
+                                    </svg>
+                                </a>
+                                <img src="./assets/pictures/marmiton2.0.png" alt="Aperçu du projet Cuisine Frontend" class="project-cover" loading="lazy" decoding="async" width="640" height="384">
+                                <div class="project-content">
+                                    <h3 class="project-title"><a href="https://github.com/Floxde99/cuisine-front" target="_blank" rel="noopener noreferrer">Cuisine Frontend</a></h3>
+                                    <p class="project-desc">Interface utilisateur pour une application de recettes de cuisine avec recherche et favoris.</p>
+                                    <p class="project-tech"><strong>Tech :</strong> JavaScript, React, CSS</p>
+                                </div>
+                            </article>
                         </div>
-                    </div>
 
-                    <!-- Projet 3: portfolio -->
-                    <div class="carousel-slide w-full lg:w-1/2 flex-shrink-0 p-4">
-                        <div
-                            class="bg-[var(--color-card)] rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-transparent hover:border-[var(--color-primary)] relative">
-                            <a href="https://github.com/Floxde99/Portfolio" target="_blank"
-                                class="absolute top-2 right-2 bg-black bg-opacity-70 p-2 rounded-full transition-transform hover:scale-110">
-                                <svg width="20" height="20" fill="white" aria-hidden="true">
-                                    <path
-                                        d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
-                                </svg>
-                            </a>
-                            <img src="./assets/pictures/Portfolio.svg" alt="Portfolio" class="w-full h-48 object-cover">
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2"><a href="https://github.com/Floxde99/Portfolio"
-                                        target="_blank"
-                                        class="text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-colors">Portfolio</a>
-                                </h3>
-                                <p class="text-[var(--color-text)] opacity-90 mb-3">Site portfolio personnel avec thème
-                                    jour/nuit, animations et formulaire de contact.</p>
-                                <p><strong class="text-[var(--color-accent)]">Tech :</strong> HTML, CSS, JavaScript,
-                                    Tailwind</p>
-                            </div>
+                        <div class="carousel-slide">
+                            <article class="project-card">
+                                <a href="https://github.com/Floxde99/Portfolio" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Voir le dépôt Portfolio sur GitHub">
+                                    <svg width="20" height="20" fill="white" aria-hidden="true">
+                                        <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
+                                    </svg>
+                                </a>
+                                <img src="./assets/pictures/Portfolio.svg" alt="Aperçu du portfolio" class="project-cover" loading="lazy" decoding="async" width="640" height="384">
+                                <div class="project-content">
+                                    <h3 class="project-title"><a href="https://github.com/Floxde99/Portfolio" target="_blank" rel="noopener noreferrer">Portfolio</a></h3>
+                                    <p class="project-desc">Site portfolio personnel avec thème jour/nuit, animations et formulaire de contact.</p>
+                                    <p class="project-tech"><strong>Tech :</strong> HTML, CSS, JavaScript, Tailwind</p>
+                                </div>
+                            </article>
                         </div>
-                    </div>
 
-                    <!-- Projet 4: ClicnClac -->
-                    <div class="carousel-slide w-full lg:w-1/2 flex-shrink-0 p-4">
-                        <div
-                            class="bg-[var(--color-card)] rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-transparent hover:border-[var(--color-primary)] relative">
-                            <a href="https://github.com/Floxde99/ClicnClac" target="_blank"
-                                class="absolute top-2 right-2 bg-black bg-opacity-70 p-2 rounded-full transition-transform hover:scale-110">
-                                <svg width="20" height="20" fill="white" aria-hidden="true">
-                                    <path
-                                        d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
-                                </svg>
-                            </a>
-                            <img src="./assets/pictures/ClicnClac.svg" alt="ClicnClac" class="w-full h-48 object-cover">
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2"><a href="https://github.com/Floxde99/ClicnClac"
-                                        target="_blank"
-                                        class="text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-colors">ClicnClac</a>
-                                </h3>
-                                <p class="text-[var(--color-text)] opacity-90 mb-3">Application de galerie photos avec
-                                    fonctionnalités de filtres et d'édition d'images.</p>
-                                <p><strong class="text-[var(--color-accent)]">Tech :</strong> JavaScript, HTML, CSS, API
-                                    Canvas</p>
-                            </div>
+                        <div class="carousel-slide">
+                            <article class="project-card">
+                                <a href="https://github.com/Floxde99/ClicnClac" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Voir le dépôt ClicnClac sur GitHub">
+                                    <svg width="20" height="20" fill="white" aria-hidden="true">
+                                        <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
+                                    </svg>
+                                </a>
+                                <img src="./assets/pictures/ClicnClac.svg" alt="Aperçu du projet ClicnClac" class="project-cover" loading="lazy" decoding="async" width="640" height="384">
+                                <div class="project-content">
+                                    <h3 class="project-title"><a href="https://github.com/Floxde99/ClicnClac" target="_blank" rel="noopener noreferrer">ClicnClac</a></h3>
+                                    <p class="project-desc">Application de galerie photos avec fonctionnalités de filtres et d'édition d'images.</p>
+                                    <p class="project-tech"><strong>Tech :</strong> JavaScript, HTML, CSS, API Canvas</p>
+                                </div>
+                            </article>
                         </div>
-                    </div>
 
-                    <!-- Projet 5: mini-social-network -->
-                    <div class="carousel-slide w-full lg:w-1/2 flex-shrink-0 p-4">
-                        <div
-                            class="bg-[var(--color-card)] rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-transparent hover:border-[var(--color-primary)] relative">
-                            <a href="https://github.com/Floxde99/mini-social-network" target="_blank"
-                                class="absolute top-2 right-2 bg-black bg-opacity-70 p-2 rounded-full transition-transform hover:scale-110">
-                                <svg width="20" height="20" fill="white" aria-hidden="true">
-                                    <path
-                                        d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
-                                </svg>
-                            </a>
-                            <img src="https://via.placeholder.com/300x200" alt="Mini Social Network"
-                                class="w-full h-48 object-cover">
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2"><a
-                                        href="https://github.com/Floxde99/mini-social-network" target="_blank"
-                                        class="text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-colors">Mini
-                                        Social Network</a></h3>
-                                <p class="text-[var(--color-text)] opacity-90 mb-3">Mini-réseau social permettant de
-                                    publier des posts et commentaires, développé en PHP.</p>
-                                <p><strong class="text-[var(--color-accent)]">Tech :</strong> PHP, MySQL, Twig</p>
-                            </div>
+                        <div class="carousel-slide">
+                            <article class="project-card">
+                                <a href="https://github.com/Floxde99/mini-social-network" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Voir le dépôt Mini Social Network sur GitHub">
+                                    <svg width="20" height="20" fill="white" aria-hidden="true">
+                                        <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
+                                    </svg>
+                                </a>
+                                <img src="https://via.placeholder.com/640x384" alt="Aperçu du projet Mini Social Network" class="project-cover" loading="lazy" decoding="async" width="640" height="384">
+                                <div class="project-content">
+                                    <h3 class="project-title"><a href="https://github.com/Floxde99/mini-social-network" target="_blank" rel="noopener noreferrer">Mini Social Network</a></h3>
+                                    <p class="project-desc">Mini-réseau social permettant de publier des posts et commentaires, développé en PHP.</p>
+                                    <p class="project-tech"><strong>Tech :</strong> PHP, MySQL, Twig</p>
+                                </div>
+                            </article>
                         </div>
-                    </div>
 
-                    <!-- Projet 6: Fuking-yolo-maze -->
-                    <div class="carousel-slide w-full lg:w-1/2 flex-shrink-0 p-4">
-                        <div
-                            class="bg-[var(--color-card)] rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-transparent hover:border-[var(--color-primary)] relative">
-                            <a href="https://github.com/Floxde99/Fuking-yolo-maze" target="_blank"
-                                class="absolute top-2 right-2 bg-black bg-opacity-70 p-2 rounded-full transition-transform hover:scale-110">
-                                <svg width="20" height="20" fill="white" aria-hidden="true">
-                                    <path
-                                        d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
-                                </svg>
-                            </a>
-                            <img src="https://via.placeholder.com/300x200" alt="Fuking Yolo Maze"
-                                class="w-full h-48 object-cover">
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2"><a
-                                        href="https://github.com/Floxde99/Fuking-yolo-maze" target="_blank"
-                                        class="text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-colors">Fuking
-                                        Yolo Maze</a></h3>
-                                <p class="text-[var(--color-text)] opacity-90 mb-3">Jeu de labyrinthe dynamique créé en
-                                    JavaScript avec génération procédurale de niveaux.</p>
-                                <p><strong class="text-[var(--color-accent)]">Tech :</strong> JavaScript, HTML5 Canvas,
-                                    CSS</p>
-                            </div>
+                        <div class="carousel-slide">
+                            <article class="project-card">
+                                <a href="https://github.com/Floxde99/Fuking-yolo-maze" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Voir le dépôt Fuking Yolo Maze sur GitHub">
+                                    <svg width="20" height="20" fill="white" aria-hidden="true">
+                                        <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
+                                    </svg>
+                                </a>
+                                <img src="https://via.placeholder.com/640x384" alt="Aperçu du projet Fuking Yolo Maze" class="project-cover" loading="lazy" decoding="async" width="640" height="384">
+                                <div class="project-content">
+                                    <h3 class="project-title"><a href="https://github.com/Floxde99/Fuking-yolo-maze" target="_blank" rel="noopener noreferrer">Fuking Yolo Maze</a></h3>
+                                    <p class="project-desc">Jeu de labyrinthe dynamique créé en JavaScript avec génération procédurale de niveaux.</p>
+                                    <p class="project-tech"><strong>Tech :</strong> JavaScript, HTML5 Canvas, CSS</p>
+                                </div>
+                            </article>
                         </div>
-                    </div>
 
-                    <!-- Projet 7: No_cat_Academy -->
-                    <div class="carousel-slide w-full lg:w-1/2 flex-shrink-0 p-4">
-                        <div
-                            class="bg-[var(--color-card)] rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border border-transparent hover:border-[var(--color-primary)] relative">
-                            <a href="https://github.com/Floxde99/No_cat_Academy" target="_blank"
-                                class="absolute top-2 right-2 bg-black bg-opacity-70 p-2 rounded-full transition-transform hover:scale-110">
-                                <svg width="20" height="20" fill="white" aria-hidden="true">
-                                    <path
-                                        d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
-                                </svg>
-                            </a>
-                            <img src="./assets/pictures/No-cat_academy.svg" alt="No Cat Academy"
-                                class="w-full h-48 object-cover">
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold mb-2"><a href="https://github.com/Floxde99/No_cat_Academy"
-                                        target="_blank"
-                                        class="text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-colors">No
-                                        Cat Academy</a></h3>
-                                <p class="text-[var(--color-text)] opacity-90 mb-3">Site vitrine HTML/CSS pour un projet
-                                    éducatif autour des chats (exercice de design responsif).</p>
-                                <p><strong class="text-[var(--color-accent)]">Tech :</strong> HTML, CSS, Bootstrap</p>
-                            </div>
+                        <div class="carousel-slide">
+                            <article class="project-card">
+                                <a href="https://github.com/Floxde99/No_cat_Academy" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Voir le dépôt No Cat Academy sur GitHub">
+                                    <svg width="20" height="20" fill="white" aria-hidden="true">
+                                        <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
+                                    </svg>
+                                </a>
+                                <img src="./assets/pictures/No-cat_academy.svg" alt="Aperçu du projet No Cat Academy" class="project-cover" loading="lazy" decoding="async" width="640" height="384">
+                                <div class="project-content">
+                                    <h3 class="project-title"><a href="https://github.com/Floxde99/No_cat_Academy" target="_blank" rel="noopener noreferrer">No Cat Academy</a></h3>
+                                    <p class="project-desc">Site vitrine HTML/CSS pour un projet éducatif autour des chats (exercice de design responsif).</p>
+                                    <p class="project-tech"><strong>Tech :</strong> HTML, CSS, Bootstrap</p>
+                                </div>
+                            </article>
                         </div>
                     </div>
                 </div>
+
+                <div class="carousel-controls">
+                    <button class="carousel-control prev" aria-label="Projet précédent">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="24" height="24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                        </svg>
+                    </button>
+                    <button class="carousel-control next" aria-label="Projet suivant">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="24" height="24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="carousel-indicators" aria-label="Navigation des projets"></div>
             </div>
+        </section>
 
-            <!-- Contrôles du carrousel -->
-            <button
-                class="carousel-control prev absolute top-1/2 left-2 -translate-y-1/2 bg-[var(--color-accent)] hover:bg-[var(--color-primary)] text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-colors z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-            </button>
-            <button
-                class="carousel-control next absolute top-1/2 right-2 -translate-y-1/2 bg-[var(--color-accent)] hover:bg-[var(--color-primary)] text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-colors z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-            </button>
+        <section id="skills" class="section">
+            <h2>Compétences</h2>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <h3>Frontend</h3>
+                    <div class="tech-logos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5" title="HTML5" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS3" title="CSS3" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" alt="JavaScript" title="JavaScript" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap" title="Bootstrap" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS" title="Tailwind CSS" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" title="React" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                    </div>
+                </div>
 
-            <!-- Indicateurs de position -->
-            <div class="carousel-indicators flex justify-center mt-6 gap-2">
-                <!-- Les indicateurs seront générés par JavaScript -->
-            </div>
-        </div>
-    </section>
+                <div class="skill-item">
+                    <h3>Backend</h3>
+                    <div class="tech-logos">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" title="PHP" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" title="Node.js" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg" alt="Twig" title="Twig" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg" alt="Prisma" title="Prisma" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                    </div>
+                </div>
 
-    <!-- Section Compétences -->
-    <section id="skills" class="section">
-        <h2>Compétences</h2>
-        <div class="skills-container">
-            <div class="skill-item">
-                <h3>Frontend</h3>
-                <div class="tech-logos">
-                    <!-- HTML5 Logo -->
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
-                        alt="HTML5" title="HTML5" class="tech-logo">
+                <div class="skill-item">
+                    <h3>Base de données</h3>
+                    <div class="tech-logos">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" title="MySQL" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" title="MongoDB" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                        <img src="https://mongoosejs.com/docs/images/mongoose5_62x30_transparent.png" alt="Mongoose" title="Mongoose" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                    </div>
+                </div>
 
-                    <!-- CSS3 Logo -->
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS3"
-                        title="CSS3" class="tech-logo">
-
-                    <!-- JavaScript Logo -->
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg"
-                        alt="JavaScript" title="JavaScript" class="tech-logo">
-
-                    <!-- Bootstrap Logo -->
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap"
-                        title="Bootstrap" class="tech-logo">
-
-                    <!-- Tailwind CSS Logo -->
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
-                        alt="Tailwind CSS" title="Tailwind CSS" class="tech-logo">
-
-                    <!-- React Logo (URL externe recommandée) -->
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"
-                        title="React" class="tech-logo">
+                <div class="skill-item">
+                    <h3>Outils & Méthodes</h3>
+                    <div class="tech-logos">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" title="Git" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" alt="Jest" title="Jest" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" title="Figma" class="tech-logo" loading="lazy" decoding="async" width="42" height="42">
+                    </div>
+                    <p class="methodologies">Scrum, Kanban, UML, Merise, MVC, Singleton</p>
                 </div>
             </div>
+        </section>
 
-            <div class="skill-item">
-                <h3>Backend</h3>
-                <div class="tech-logos">
-                    <!-- PHP Logo -->
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP"
-                        title="PHP" class="tech-logo">
-
-                    <!-- Node.js Logo -->
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                        alt="Node.js" title="Node.js" class="tech-logo">
-
-                    <!-- Twig (Symfony) Logo -->
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg"
-                        alt="Twig" title="Twig" class="tech-logo">
-
-                    <!-- Prisma Logo -->
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg"
-                        alt="Prisma" title="Prisma" class="tech-logo">
-                </div>
+        <section id="contact" class="section">
+            <h2>Contact</h2>
+            <div class="contact-block">
+                <form class="contact-form" id="contactForm" method="POST" data-netlify="true" name="contact">
+                    <input type="hidden" name="form-name" value="contact">
+                    <label class="sr-only" for="name">Nom</label>
+                    <input id="name" type="text" name="name" placeholder="Votre nom" required autocomplete="name">
+                    <label class="sr-only" for="email">Email</label>
+                    <input id="email" type="email" name="email" placeholder="Votre email" required autocomplete="email">
+                    <label class="sr-only" for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+                    <button type="submit">Envoyer</button>
+                </form>
+                <div id="notification" class="notification" aria-live="polite" role="status"></div>
             </div>
+        </section>
+    </main>
 
-            <div class="skill-item">
-                <h3>Base de données</h3>
-                <div class="tech-logos">
-                    <!-- MySQL Logo -->
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"
-                        title="MySQL" class="tech-logo">
-
-                    <!-- MongoDB Logo -->
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                        alt="MongoDB" title="MongoDB" class="tech-logo">
-
-                    <!-- Mongoose (MongoDB-related) -->
-                    <img src="https://mongoosejs.com/docs/images/mongoose5_62x30_transparent.png" alt="Mongoose"
-                        title="Mongoose" class="tech-logo">
-                </div>
-            </div>
-
-            <div class="skill-item">
-                <h3>Outils & Méthodes</h3>
-                <div class="tech-logos">
-                    <!-- Git Logo -->
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
-                        title="Git" class="tech-logo">
-
-                    <!-- Jest Logo -->
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" alt="Jest"
-                        title="Jest" class="tech-logo">
-
-                    <!-- Figma Logo -->
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"
-                        title="Figma" class="tech-logo">
-                </div>
-                <p class="methodologies">Scrum, Kanban, UML, Merise, MVC, Singleton</p>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Section Contact -->
-    <section id="contact" class="section">
-        <h2>Contact</h2>
-        <div class="contact-block">
-            <form class="contact-form" id="contactForm" method="POST" data-netlify="true" name="contact">
-                <!-- Ajoute ce champ caché que Netlify requiert -->
-                <input type="hidden" name="form-name" value="contact">
-
-                <input type="text" name="name" placeholder="Votre nom" required>
-                <input type="email" name="email" placeholder="Votre email" required>
-                <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
-                <button type="submit">Envoyer</button>
-            </form>
-            <div id="notification" class="notification"></div>
-        </div>
-    </section>
-
-    <!-- Scripts -->
-    <script src="./assets/script.js"></script>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-info">
@@ -425,20 +297,18 @@
             <div class="footer-social">
                 <a href="https://github.com/Floxde99" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <svg width="24" height="24" fill="currentColor" aria-hidden="true">
-                        <path
-                            d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
+                        <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
                     </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/florian-faucher-818242357" target="_blank"
-                    rel="noopener noreferrer" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/florian-faucher-818242357" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <svg width="24" height="24" fill="currentColor" aria-hidden="true">
-                        <path
-                            d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.29c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.29h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 3.61 4.62v4.69z" />
+                        <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.29c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 10.29h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.39v4.58h-3v-9h2.89v1.23h.04c.4-.75 1.38-1.54 2.85-1.54 3.05 0 3.61 2.01 3.61 4.62v4.69z" />
                     </svg>
                 </a>
             </div>
         </div>
     </footer>
-</body>
 
+    <script src="./assets/script.js" defer></script>
+</body>
 </html>

@@ -1,257 +1,225 @@
-// Ajoute l'effet "fade-in" aux projets lors du scroll
-document.addEventListener('DOMContentLoaded', function() {
-    const items = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const initThemeToggle = () => {
+  const toggle = document.getElementById("theme-toggle");
+  if (!toggle) return;
+
+  toggle.addEventListener("click", () => {
+    const isLight = document.documentElement.classList.toggle("light-theme");
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+  });
+
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    document.documentElement.classList.add("light-theme");
+  }
+};
+
+const initSmoothScroll = () => {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const target = document.querySelector(anchor.getAttribute("href"));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" });
+    });
+  });
+};
+
+const initNav = () => {
+  const navToggle = document.querySelector(".nav-toggle");
+  const navLinks = document.querySelector(".nav-links");
+  if (!navToggle || !navLinks) return;
+
+  navToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("active");
+    navToggle.classList.toggle("active", isOpen);
+    navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      navToggle.classList.remove("active");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+};
+
+const initRevealOnScroll = () => {
+  const revealTargets = document.querySelectorAll(".fade-in, .skill-item, .section");
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    revealTargets.forEach((el) => el.classList.add("visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.2 });
-    items.forEach(item => observer.observe(item));
-    
-    // Fade-in sur les compétences
-    const skills = document.querySelectorAll('.skill-item');
-    skills.forEach(item => observer.observe(item));
-    
-    // Smooth scroll pour anciennes versions de navigateurs (optionnel)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-    
-    // Menu burger responsive
-    const navToggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    if (navToggle && navLinks) {
-      navToggle.addEventListener('click', function() {
-        navToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-      });
-      // Ferme le menu après clic sur un lien
-      navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          navToggle.classList.remove('active');
-          navLinks.classList.remove('active');
-        });
-      });
-    }
-    
-    // Ajoute l'effet "fade-in" aux titres de section
-    document.querySelectorAll('.section').forEach(section => {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.2 });
-      observer.observe(section);
-})
-});
+    },
+    { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+  );
 
+  revealTargets.forEach((el) => observer.observe(el));
+};
 
-// Ajoute dans script.js
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loader');
-  if(loader) loader.style.opacity = 0;
-  setTimeout(() => loader && loader.remove(), 500);
-});
+const initContactForm = () => {
+  const form = document.getElementById("contactForm");
+  const notification = document.getElementById("notification");
+  if (!form || !notification) return;
 
-// Dans script.js
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  // Empêcher la redirection de page mais soumettre à Netlify
-  e.preventDefault();
-  
-  const notification = document.getElementById('notification');
-  const submitBtn = e.target.querySelector('button[type="submit"]');
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = 'Envoi en cours...';
-  
-  // Envoyer le formulaire via l'API Fetch à Netlify
-  const formData = new FormData(e.target);
-  
-  fetch("/", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formData).toString()
-  })
-  .then(() => {
-    // Message de succès
-    notification.textContent = '✓ Message envoyé avec succès!';
-    notification.className = 'notification success';
-    e.target.reset(); // Réinitialiser le formulaire
-    
-    // Effacer la notification après 5 secondes
-    setTimeout(() => {
-      notification.className = 'notification';
-    }, 5000);
-  })
-  .catch(error => {
-    notification.textContent = '✗ Une erreur s\'est produite lors de l\'envoi';
-    notification.className = 'notification error';
-    
-    setTimeout(() => {
-      notification.className = 'notification';
-    }, 5000);
-  })
-  .finally(() => {
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = 'Envoyer';
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  const toggleTheme = () => {
-    if (document.documentElement.classList.contains('light-theme')) {
-      // Basculer vers le thème sombre
-      document.documentElement.classList.remove('light-theme');
-      localStorage.setItem('theme', 'dark');
+  const showNotification = (message, type) => {
+    notification.textContent = message;
+    notification.className = `notification ${type}`;
+    if (type === "success") {
+      notification.setAttribute("role", "status");
+      notification.setAttribute("aria-live", "polite");
     } else {
-      // Basculer vers le thème clair
-      document.documentElement.classList.add('light-theme');
-      localStorage.setItem('theme', 'light');
+      notification.setAttribute("role", "alert");
+      notification.setAttribute("aria-live", "assertive");
     }
+    setTimeout(() => {
+      notification.className = "notification";
+      notification.textContent = "";
+      notification.removeAttribute("role");
+      notification.removeAttribute("aria-live");
+    }, 5000);
   };
 
-  // Ajouter l'écouteur d'événement au bouton
-  const themeToggle = document.getElementById('theme-toggle');
-  if (themeToggle) {
-    themeToggle.addEventListener('click', toggleTheme);
-  }
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Envoi en cours...";
 
-  // Vérifier si l'utilisateur a déjà une préférence stockée
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'light') {
-    document.documentElement.classList.add('light-theme');
-  }
-  
-  // Si aucune préférence n'est stockée, utiliser le thème sombre par défaut
-  // (Pas besoin de code ici car ton site est déjà en mode sombre par défaut)
-});
+    const formData = new FormData(form);
 
-// Initialisation du carrousel
-document.addEventListener('DOMContentLoaded', function() {
-  const track = document.querySelector('.carousel-track');
-  const slides = document.querySelectorAll('.carousel-slide');
-  const prevButton = document.querySelector('.carousel-control.prev');
-  const nextButton = document.querySelector('.carousel-control.next');
-  const indicatorsContainer = document.querySelector('.carousel-indicators');
-  
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => {
+        showNotification("Message envoyé avec succès !", "success");
+        form.reset();
+      })
+      .catch(() => {
+        showNotification("Une erreur s'est produite lors de l'envoi.", "error");
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Envoyer";
+      });
+  });
+};
+
+const initCarousel = () => {
+  const track = document.querySelector(".carousel-track");
+  const slides = document.querySelectorAll(".carousel-slide");
+  const prevButton = document.querySelector(".carousel-control.prev");
+  const nextButton = document.querySelector(".carousel-control.next");
+  const indicatorsContainer = document.querySelector(".carousel-indicators");
+  const container = document.querySelector(".carousel-container");
+
+  if (!track || !slides.length || !prevButton || !nextButton || !indicatorsContainer || !container) return;
+
   let currentIndex = 0;
   let slideWidth = 0;
   let slidesPerView = 1;
-  let totalSlides = slides.length;
   let indicators = [];
-  
-  // Fonction pour initialiser les dimensions
-  function initCarousel() {
-    // Déterminer combien de slides afficher par vue
-    slidesPerView = window.innerWidth >= 1024 ? 2 : 1;
-    slideWidth = track.clientWidth / slidesPerView;
-    
-    // Appliquer la largeur aux slides
-    slides.forEach(slide => {
-      slide.style.width = `${slideWidth}px`;
+
+  const goToSlide = (index) => {
+    if (index < 0) {
+      index = 0;
+    } else if (index > slides.length - slidesPerView) {
+      index = slides.length - slidesPerView;
+    }
+
+    currentIndex = index;
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+    const activeGroup = Math.floor(currentIndex / slidesPerView);
+    indicators.forEach((dot, i) => {
+      dot.classList.toggle("active", i === activeGroup);
+      dot.setAttribute("aria-current", i === activeGroup ? "true" : "false");
     });
-    
-    // Créer les indicateurs
-    indicatorsContainer.innerHTML = '';
+
+    prevButton.disabled = currentIndex === 0;
+    nextButton.disabled = currentIndex >= slides.length - slidesPerView;
+  };
+
+  const buildIndicators = (totalGroups) => {
+    indicatorsContainer.innerHTML = "";
     indicators = [];
-    
-    const totalGroups = Math.ceil(totalSlides / slidesPerView);
-    
     for (let i = 0; i < totalGroups; i++) {
-      const dot = document.createElement('button');
-      dot.classList.add('w-3', 'h-3', 'rounded-full', 'bg-gray-300', 'hover:bg-gray-400', 'transition-colors');
-      dot.setAttribute('aria-label', `Voir projet ${i + 1}`);
-      
-      dot.addEventListener('click', () => {
-        goToSlide(i * slidesPerView);
-      });
-      
+      const dot = document.createElement("button");
+      dot.setAttribute("aria-label", `Voir projet ${i + 1}`);
+      dot.addEventListener("click", () => goToSlide(i * slidesPerView));
       indicatorsContainer.appendChild(dot);
       indicators.push(dot);
     }
-    
-    // Réinitialiser la position
-    goToSlide(0);
-  }
-  
-  // Fonction pour changer de slide
-  function goToSlide(index) {
-    if (index < 0) {
-      index = 0;
-    } else if (index > totalSlides - slidesPerView) {
-      index = totalSlides - slidesPerView;
-    }
-    
-    currentIndex = index;
-    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-    
-    // Mettre à jour les indicateurs
-    const activeGroup = Math.floor(currentIndex / slidesPerView);
-    indicators.forEach((dot, i) => {
-      if (i === activeGroup) {
-        dot.classList.remove('bg-gray-300');
-        dot.classList.add('bg-[var(--color-accent)]', 'scale-125');
-      } else {
-        dot.classList.add('bg-gray-300');
-        dot.classList.remove('bg-[var(--color-accent)]', 'scale-125');
-      }
+  };
+
+  const initDimensions = () => {
+    slidesPerView = window.innerWidth >= 1024 ? 2 : 1;
+    slideWidth = container.clientWidth / slidesPerView;
+
+    slides.forEach((slide) => {
+      slide.style.width = `${slideWidth}px`;
     });
-    
-    // Activer/désactiver les boutons selon la position
-    prevButton.disabled = currentIndex === 0;
-    nextButton.disabled = currentIndex >= totalSlides - slidesPerView;
-    
-    prevButton.style.opacity = prevButton.disabled ? '0.5' : '1';
-    nextButton.style.opacity = nextButton.disabled ? '0.5' : '1';
-  }
-  
-  // Navigation
-  prevButton.addEventListener('click', () => {
-    goToSlide(currentIndex - slidesPerView);
+
+    buildIndicators(Math.ceil(slides.length / slidesPerView));
+    goToSlide(0);
+  };
+
+  prevButton.addEventListener("click", () => goToSlide(currentIndex - slidesPerView));
+  nextButton.addEventListener("click", () => goToSlide(currentIndex + slidesPerView));
+
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(initDimensions, 150);
   });
-  
-  nextButton.addEventListener('click', () => {
-    goToSlide(currentIndex + slidesPerView);
-  });
-  
-  // Initialiser le carrousel
-  initCarousel();
-  
-  // Réinitialiser lors du redimensionnement
-  window.addEventListener('resize', initCarousel);
-  
-  // Ajouter le swipe pour mobile
+
   let touchStartX = 0;
   let touchEndX = 0;
-  
-  const container = document.querySelector('.carousel-container');
-  
-  container.addEventListener('touchstart', e => {
+
+  container.addEventListener("touchstart", (e) => {
     touchStartX = e.changedTouches[0].screenX;
   });
-  
-  container.addEventListener('touchend', e => {
+
+  container.addEventListener("touchend", (e) => {
     touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  });
-  
-  function handleSwipe() {
     const swipeThreshold = 50;
     if (touchEndX < touchStartX - swipeThreshold) {
-      // Swipe à gauche
       goToSlide(currentIndex + slidesPerView);
     } else if (touchEndX > touchStartX + swipeThreshold) {
-      // Swipe à droite
       goToSlide(currentIndex - slidesPerView);
     }
-  }
+  });
+
+  initDimensions();
+};
+
+const initLoader = () => {
+  const loader = document.getElementById("loader");
+  if (!loader) return;
+  loader.style.opacity = 0;
+  setTimeout(() => loader.remove(), 500);
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  initThemeToggle();
+  initNav();
+  initSmoothScroll();
+  initRevealOnScroll();
+  initContactForm();
+  initCarousel();
 });
+
+window.addEventListener("load", initLoader);
